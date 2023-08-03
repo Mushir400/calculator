@@ -1,0 +1,123 @@
+from tkinter import *
+
+def button_click(number):
+  global abs
+  if abs:
+    textbox.delete(0, END)
+    abs=False
+  current = textbox.get()
+  textbox.delete(0, END)
+  textbox.insert(END, current + str(number))
+
+abs=False
+
+def button_clear():
+  global abs
+  current= textbox.get()  
+  textbox.delete(first=len(current)-1,last="end")
+
+def button_equal():
+  global abs
+  expression = textbox.get()
+  try:
+    result = eval(expression)
+    textbox.delete(0, END)
+    textbox.insert(END, str(result))
+    abs=True
+  except:
+    textbox.delete(0, END)
+    textbox.insert(END, "Error")
+    
+def button_ac():
+  global abs
+  textbox.delete(0, END)
+
+def button_open_bracket():
+  current = textbox.get()
+  textbox.delete(0, END)
+  textbox.insert(END, current + "(")
+
+def button_close_bracket():
+  current = textbox.get()
+  textbox.delete(0, END)
+  textbox.insert(END, current + ")")
+
+window = Tk()
+window.geometry("500x500")
+
+window.title("Calculator")
+
+textbox = Entry(window, width=20)
+textbox.place(x=35,y=1,width=247)
+
+button_1 = Button(window, text="1",font="bold",bg="yellow",command=lambda: button_click(1))
+button_1.place(x=35,y=215,height=60,width=60)
+
+button_2 = Button(window, text="2",font="bold",bg="yellow", command=lambda: button_click(2))
+button_2.place(x=95,y=215,height=60,width=60)
+
+button_3 = Button(window, text="3",font="bold",bg="yellow",command=lambda: button_click(3))
+button_3.place(x=155,y=215,height=60,width=60)
+
+button_4 = Button(window, text="4",font="bold",bg="yellow",command=lambda: button_click(4))
+button_4.place(x=35,y=155,height=60,width=60)
+
+button_5 = Button(window, text="5",font="bold",bg="yellow",command=lambda: button_click(5))
+button_5.place(x=95,y=155,height=60,width=60)
+
+button_6 = Button(window, text="6",font="bold",bg="yellow",command=lambda: button_click(6))
+button_6.place(x=155,y=155,height=60,width=60)
+
+button_7 = Button(window, text="7",font="bold",bg="yellow",command=lambda: button_click(7))
+button_7.place(x=35,y=95,height=60,width=60)
+
+button_8 = Button(window, text="8",font="bold",bg="yellow", command=lambda: button_click(8))
+button_8.place(x=95,y=95,height=60,width=60)
+
+button_9 = Button(window, text="9",font="bold",bg="yellow",command=lambda: button_click(9))
+button_9.place(x=155,y=95,height=60,width=60)
+
+button_0 = Button(window,text="0",font="bold",bg="yellow",command=lambda: button_click(0))
+button_0.place(x=35,y=275,height=60,width=60)
+
+button_plus = Button(window, text="+", font="bold",bg="orange",command=lambda: button_click('+'))
+
+button_minus = Button(window, text="-",  font="bold",bg="orange",command=lambda: button_click('-'))
+
+button_multiply = Button(window, text="*", font="bold",bg="orange" ,command=lambda: button_click('*'))
+
+button_divide = Button(window, text="/",  font="bold",bg="orange",command=lambda: button_click('/'))
+
+button_dot = Button(window, text=".", font="bold",bg="orange" ,command=lambda: button_click('.'))
+
+button_equal = Button(window, text="=",  font="bold",bg="blue",command=button_equal)
+
+button_clear = Button(window, text="C", font="bold",bg="red" ,command=button_clear)
+
+button_ac = Button(window, text="AC", font="bold",bg="red",command=button_ac)
+
+button_open_bracket = Button(window, text="(",font="bold",bg="orange" ,command=button_open_bracket)
+
+button_close_bracket = Button(window, text=")",font="bold",bg="orange" ,command=button_close_bracket)
+
+button_plus.place(x=220,y=275,height=60,width=60)
+
+button_minus.place(x=220,y=215,height=60,width=60)
+
+button_multiply.place(x=220,y=155,height=60,width=60)
+
+button_divide.place(x=220,y=95,height=60,width=60)
+
+button_dot.place(x=95,y=275,height=60,width=60)
+
+button_equal.place(x=155,y=275,height=60,width=60)
+
+button_clear.place(x=220,y=35,height=60,width=60)
+
+button_ac.place(x=35,y=35,height=60,width=60)
+
+button_open_bracket.place(x=95,y=35,height=60,width=60)
+
+button_close_bracket.place(x=155,y=35,height=60,width=60)
+
+window.mainloop()
